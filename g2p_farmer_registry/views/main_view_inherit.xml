@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Main Social Registry menu → Farmer Registry -->
+    <record model="ir.ui.menu" id="g2p_registry_base.g2p_main_menu_root">
+        <field name="name">Farmer Registry</field>
+        <field name="web_icon">g2p_farmer_registry,static/description/farmer.jpeg</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Discuss (probably already exists – override by external id) -->
+    <record model="ir.ui.menu" id="mail.menu_root_discuss">
+        <field name="web_icon">g2p_farmer_registry,static/description/discuss.jpeg</field>
+    </record>
+
+    <!--     Service Provider -->
+    <record model="ir.ui.menu" id="g2p_agent_portal_base.menu_account_supplier">
+        <field name="name">Service Provider</field>
+        <field name="web_icon">g2p_farmer_registry,static/description/service.png</field>
+    </record>
+
+    <!-- Job Queue -->
+    <record model="ir.ui.menu" id="queue_job.menu_queue_job_root">
+        <field name="web_icon">g2p_farmer_registry,static/description/queue.jpeg</field>
+    </record>
+
+    <!-- ODK -->
+    <record model="ir.ui.menu" id="g2p_odk_importer.odk_menu_root">
+        <field name="web_icon">g2p_farmer_registry,static/description/odk.png</field>
+    </record>
+
+
+    <!-- Apps -->
+    <record model="ir.ui.menu" id="base.menu_management">
+        <field name="web_icon">g2p_farmer_registry,static/description/apps.jpeg</field>
+    </record>
+
+    <!-- Settings -->
+    <record model="ir.ui.menu" id="base.menu_administration">
+        <field name="web_icon">g2p_farmer_registry,static/description/settings.jpeg</field>
+    </record>
+
+    <record model="ir.ui.menu" id="g2p_superset_dashboard.menu_superset_dashboard_embedded">
+        <field name="sequence">8</field>
+    </record>
+
+    <record model="ir.ui.menu" id="g2p_agent_portal_base.menu_account_supplier">
+        <field name="sequence">12</field>
+    </record>
+
+    <record model="ir.ui.menu" id="mts_connector.mts_importer_root">
+        <field name="sequence">10</field>
+    </record>
+
+    <record model="ir.ui.menu" id="mail.menu_root_discuss">
+        <field name="sequence">11</field>
+    </record>
+
+    <record model="ir.ui.menu" id="g2p_documents.g2p_documents_main_menu_root">
+        <field name="sequence">9</field>
+    </record>
+<!--    configuration menu sequence changes-->
+
+    <record model="ir.ui.menu" id="g2p_registry_base.menu_id_type">
+        <field name="sequence">15</field>
+    </record>
+    <record model="ir.ui.menu" id="g2p_registry_base.menu_gender_type">
+        <field name="sequence">16</field>
+    </record>
+    <record model="ir.ui.menu" id="g2p_registry_group.menu_group_kind">
+        <field name="sequence">17</field>
+    </record>
+    <record model="ir.ui.menu" id="g2p_registry_base.menu_registrant_tags">
+        <field name="sequence">18</field>
+    </record>
+    <record model="ir.ui.menu" id="g2p_registry_base.menu_relationship">
+        <field name="sequence">19</field>
+    </record>
+    <record model="ir.ui.menu" id="g2p_registry_membership.menu_group_membership_kind">
+        <field name="sequence">20</field>
+    </record>
+
+    <!-- Main Individuals menu → Farmers -->
+    <record id="g2p_registry_individual.menu_individuals_list" model="ir.ui.menu">
+        <field name="name">Farmers</field>
+    </record>
+
+    <!-- Main list action name -->
+    <record id="g2p_registry_individual.action_individuals_list" model="ir.actions.act_window">
+        <field name="name">Farmers</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new farmer registrant!
+            </p>
+            <p>
+                Click the create button to enter the new farmer's information.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu entry -->
+    <record id="g2p_registry_id_deduplication.g2p_deduplication_individual_menu" model="ir.ui.menu">
+        <field name="name">Farmers</field>
+    </record>
+
+    <!-- Action name -->
+    <record id="g2p_registry_id_deduplication.action_duplicate_individuals" model="ir.actions.act_window">
+        <field name="name">Duplicated Farmers</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Check duplicates farmer registrant!
+            </p>
+        </field>
+    </record>
+
+
+    <!-- 4. Tree view for Subsidy Details -->
+    <record id="g2p_farmer_registry.view_subsidy_detail_tree" model="ir.ui.view">
+        <field name="name">g2p.subsidy.detail.tree</field>
+        <field name="model">g2p.subsidy.detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="season_id"/>
+                <field name="subsidy_type"/>
+                <field name="district_id" optional="hide"/>
+                <field name="asc_id" optional="hide"/>
+                <field name="plr_number"/>
+                <field name="land_extent" sum="Total Land Extent (HA)"/>
+                <field name="amount_quantity"/>
+                <field name="status_id"/>
+                <field name="cultivation_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Subsidy Details -->
+    <record id="action_subsidy_detail_list" model="ir.actions.act_window">
+        <field name="name">Subsidy Details</field>
+        <field name="res_model">g2p.subsidy.detail</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="g2p_farmer_registry.view_subsidy_detail_tree"/>  <!-- add this -->
+        <field name="domain">[]</field>
+    </record>
+
+
+
+    <!-- Subsidy Status -->
+    <record id="view_status_subsidy_tree" model="ir.ui.view">
+        <field name="name">status.subsidy.tree</field>
+        <field name="model">status.subsidy</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" required="1"/>
+                <field name="code" required="1"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Subsidy Details Menu -->
+    <menuitem
+            id="menu_subsidy_details"
+            name="Subsidy Details"
+            action="g2p_farmer_registry.action_subsidy_detail_list"
+            web_icon="g2p_farmer_registry,static/description/subsidy.png"
+            sequence="5"
+    />
+
+
+
+    <!--    season menu and view-->
+
+
+    <record id="view_season_tree" model="ir.ui.view">
+        <field name="name">g2p.season.tree</field>
+        <field name="model">g2p.season</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">  <!-- editable at bottom or top -->
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_season" model="ir.actions.act_window">
+        <field name="name">Season</field>
+        <field name="res_model">g2p.season</field>
+        <field name="view_mode">tree</field>  <!-- only list view for now -->
+        <field name="domain">[]</field>
+        <field name="context">{'tree_view_ref': 'g2p_farmer_registry.view_season_tree'}</field>
+    </record>
+
+    <menuitem
+            id="menu_season"
+            name="Season"
+            parent="g2p_registry_base.g2p_configuration_menu_root"
+            action="action_season"
+            sequence="7"
+    />
+
+
+    <!-- Sub-menu: Status Management (under Farmer Registry) -->
+    <menuitem
+            id="menu_status_management"
+            name="Status Management"
+            parent="g2p_registry_base.g2p_configuration_menu_root"
+            sequence="10"
+    />
+
+
+    <!-- 2. Subsidy Status -->
+    <record id="action_status_subsidy" model="ir.actions.act_window">
+        <field name="name">Subsidy Status</field>
+        <field name="res_model">status.subsidy</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'tree_view_ref': 'g2p_farmer_registry.view_status_subsidy_tree'}</field>
+    </record>
+
+    <menuitem
+            id="menu_status_subsidy"
+            name="Subsidy Details Status"
+            parent="menu_status_management"
+            action="action_status_subsidy"
+            sequence="20"
+    />
+
+
+</odoo>

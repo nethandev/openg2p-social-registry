@@ -1,0 +1,143 @@
+.o_home_menu_background{
+ background-color: #20b237 !important;
+}
+.o_home_menu{
+ background-color: #20b237 !important;
+}
+.o_main_navbar {
+    background-color: #20b237 !important;          /* ← Changed from hsl(44, 92%, 53%) to green */
+    border-bottom: 1px solid #011627;
+    --o-navbar-height: 56px;
+}
+
+.o_main_navbar .o_menu_brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.o_main_navbar .o_menu_sections .o_nav_entry,
+.o_main_navbar .o_menu_sections .dropdown-toggle {
+    background-color: #20b237 !important;          /* Darker green for entries */
+    color: #ffffff;                                /* White text for better contrast */
+    border: none;
+    border-bottom: 1px solid #011627 !important;
+}
+
+.o_main_navbar .o_navbar_apps_menu .dropdown-toggle {
+    color: #ffffff;
+}
+.o_notification_counter {
+    background-color: #2e7d32 !important;          /* ← Changed from #e27d21 to green */
+}
+
+.o_MessagingMenu_counter {
+    background-color: #2e7d32 !important;          /* ← Changed from #e27d21 to green */
+}
+
+.o_quick_editable a,
+.o_quick_editable > span {
+    color: #2e7d32 !important;                     /* ← Changed from #e27d21 to green */
+}
+
+.o_menu_sections {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 47%;
+    background-size: contain;
+}
+
+.o_action_manager .o_main_navbar {
+    background-image: url("/g2p_farmer_registry/static/src/img/loo.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 47%;
+    background-size: contain;
+}
+
+.o_main_navbar {
+    background-image: url("/g2p_farmer_registry/static/src/img/loo.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 47%;
+    background-size: contain;
+}
+
+
+@media screen and (max-width: 1370px) {
+    .o_menu_sections {
+        background-position-x: 60% !important;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .o_menu_sections {
+        background-position-x: 70% !important;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .o_menu_sections {
+        background-position-x: 80% !important;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .o_menu_sections {
+        background-image: none !important;
+    }
+}
+
+/* Center all column headers in tree/list views */
+.o_list_view th {
+    text-align: center !important;
+}
+
+
+/*cultivation details table page column customizations*/
+.custom-damage-tree {
+
+    th[data-name="name"] {
+        width: 180px !important;
+        min-width: 150px !important;
+        max-width: 250px !important;
+    }
+
+    th[data-name="type_id"] {
+        width: 160px !important;
+        min-width: 140px !important;
+    }
+
+    th[data-name="stage_id"] {
+        width: 200px !important;
+        min-width: 180px !important;
+    }
+
+    th[data-name="percentage"] {
+        width: 120px !important;
+        min-width: 100px !important;
+    }
+
+    th[data-name="extent"] {
+        width: 140px !important;
+        min-width: 120px !important;
+    }
+
+    th[data-name="date"] {
+        width: 140px !important;
+        min-width: 120px !important;
+    }
+
+    /* Optional: make sure cells respect the header width */
+    td[data-name="name"],
+    td[data-name="type_id"],
+    td[data-name="stage_id"],
+    td[data-name="percentage"],
+    td[data-name="extent"],
+    td[data-name="date"] {
+        max-width: inherit !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

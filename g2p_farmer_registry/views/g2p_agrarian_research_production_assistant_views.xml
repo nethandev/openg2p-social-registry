@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Agrarian Research &amp; Production Assistant Tree -->
+    <record id="view_arpa_tree" model="ir.ui.view">
+        <field name="name">g2p.agrarian.research.production.assistant.tree</field>
+        <field name="model">g2p.agrarian.research.production.assistant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="arpa_code"/>
+                <field name="arpa_name"/>
+                <field name="asc_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Agrarian Research &amp; Production Assistant Form -->
+    <record id="view_arpa_form" model="ir.ui.view">
+        <field name="name">g2p.agrarian.research.production.assistant.form</field>
+        <field name="model">g2p.agrarian.research.production.assistant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="arpa_code"/>
+                        <field name="arpa_name"/>
+                        <field name="arpa_sname"/>
+                        <field name="arpa_tname"/>
+                    </group>
+                    <group>
+                        <field name="asc_id"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Agrarian Research &amp; Production Assistant Action -->
+    <record id="action_arpa" model="ir.actions.act_window">
+        <field name="name">Agrarian Research &amp; Production Assistant</field>
+        <field name="res_model">g2p.agrarian.research.production.assistant</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_arpa"
+              name="ARPA"
+              parent="g2p_registry_base.g2p_configuration_menu_root"
+              action="action_arpa"
+              sequence="5"/>
+
+</odoo>

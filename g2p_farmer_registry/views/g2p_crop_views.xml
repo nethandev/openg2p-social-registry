@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_g2p_crop_tree" model="ir.ui.view">
+        <field name="name">g2p.crop.tree</field>
+        <field name="model">g2p.crop</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="crop_type_id"/>
+                <field name="crop_category_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_g2p_crop_form" model="ir.ui.view">
+        <field name="name">g2p.crop.form</field>
+        <field name="model">g2p.crop</field>
+        <field name="arch" type="xml">
+            <form string="Crop">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="crop_type_id" domain="[]"/>  <!-- can add domain if needed -->
+                        <field name="crop_category_id" domain="[]"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_g2p_crop" model="ir.actions.act_window">
+        <field name="name">Crops</field>
+        <field name="res_model">g2p.crop</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new crop!
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_g2p_crop"
+        name="Crops"
+        parent="menu_g2p_crop_root"
+        action="action_g2p_crop"
+        sequence="10"
+    />
+</odoo>

@@ -1,0 +1,42 @@
+
+		.o_main_navbar {
+		    background-color: #20b237 !important;          /* ← Changed from hsl(44, 92%, 53%) to green */
+		    border-bottom: 1px solid #011627;
+		    --o-navbar-height: 56px;
+		}
+
+
+		.o_statusbar_buttons .btn-success {
+		    background: #20b237 !important;
+		    border: 1px solid #20b237 !important;
+		    border-radius: 4px !important;
+		    min-width: 90px;
+		}
+
+		.btn-success {
+		    background: #20b237 !important;                /* ← Made consistent with navbar green */
+		    border: 1px solid #20b237 !important;
+		    border-radius: 4px;
+		    opacity: 1;
+		}
+
+
+
+		.o_statusbar_buttons .btn-success {
+		    background: #20b237 !important;
+		    border: 1px solid #20b237 !important;
+		    border-radius: 4px !important;
+		    min-width: 90px;
+		}
+
+		.btn-success {
+		    background: #20b237 !important;                /* ← Made consistent with navbar green */
+		    border: 1px solid #20b237 !important;
+		    border-radius: 4px;
+		    opacity: 1;
+		}
+
+    .mk_app_name {
+    color: #20b237 !important;
+    font-weight: 500;   // optional, makes it stronger
+}

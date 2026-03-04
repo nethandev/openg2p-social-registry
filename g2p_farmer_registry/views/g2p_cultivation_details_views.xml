@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- 2. Tree view for Cultivation Details -->
+    <record id="g2p_farmer_registry.view_cultivation_details_tree" model="ir.ui.view">
+        <field name="name">g2p.cultivation.details.tree</field>
+        <field name="model">g2p.cultivation.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id" string="Farmer" width="180"/>
+                <field name="season_id" string="Season" width="140"/>
+                <field name="district_id" string="District" width="140"/>
+                <field name="asc_id" string="ASC" width="120"/>
+                <field name="plr_number" string="PLR No" width="130"/>
+                <field name="irrigation" string="Irrigation" width="120"/>
+                <field name="land_extent" string="Land Extent (HA)" width="160" sum="Total Land"/>
+                <field name="cultivated_extend" string="Cultivated Extend (HA)" width="180" sum="Total Cultivated"/>
+                <!-- Hide less critical columns by default -->
+                <field name="cultivated_date" string="Cultivated Date" optional="hide"/>
+                <field name="data_entered" string="Data Entered" optional="hide"/>
+                <field name="last_update" string="Last Update" optional="hide"/>
+                <field name="status_id" string="Status" optional="hide"/>
+                <field name="land_id" string="Land" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Main Form View -->
+    <record id="view_g2p_cultivation_details_form" model="ir.ui.view">
+        <field name="name">g2p.cultivation.details.form</field>
+        <field name="model">g2p.cultivation.details</field>
+        <field name="arch" type="xml">
+            <form string="Cultivation Details">
+                <!-- Header / Status bar (optional) -->
+                <header>
+                    <field name="status_id" widget="statusbar" clickable="1"/>
+                </header>
+                <sheet>
+                    <!-- Top group - main info -->
+                    <group>
+                        <group>
+                            <field name="season_id" required="1"/>
+                            <field name="partner_id" string="Farmer" required="1"/>
+                        </group>
+                        <group>
+                            <field name="land_id" domain="[('partner_id', '=', partner_id)]"/>
+                            <field name="district_id" readonly="1"/>
+                            <field name="asc_id" domain="[('district_id', '=', district_id)]"/>
+<!--                            <field name="code" readonly="1"/>-->
+                            <field name="plr_number" readonly="1"/>
+                        </group>
+                    </group>
+                    <!-- Land & Cultivation info -->
+                    <group string="Land &amp; Cultivation">
+                        <group>
+                            <field name="irrigation"/>
+                            <field name="land_extent" string="Land Extent (HA)"/>
+                            <field name="cultivated_extend" string="Cultivated Extent (HA)"/>
+                        </group>
+                        <group>
+                            <field name="cultivated_date"/>
+                            <field name="data_entered" readonly="1"/>
+                            <field name="last_update" readonly="1"/>
+                        </group>
+                    </group>
+                    <!-- Crop info -->
+                    <group string="Crop &amp; Harvest Details">
+                        <group>
+                            <field name="crop_id"/>
+                            <field name="crop_type_id"/>
+                            <field name="crop_category_id"/>
+                        </group>
+                        <group>
+                            <field name="harvested_extent"/>
+                            <field name="harvested_yield"/>
+                            <field name="harvested_date"/>
+                        </group>
+                    </group>
+                    <!-- Notebook with separate pages for One2many relations -->
+                    <notebook>
+                        <!-- Crops Tab -->
+<!--                        <page string="Crops">-->
+<!--                            <field name="crop_id">-->
+<!--                                <tree editable="bottom">-->
+<!--                                </tree>-->
+<!--                                <form>-->
+<!--                                    <sheet>-->
+<!--                                        <group>-->
+<!--                                            <field name="name" required="1"/>-->
+<!--                                            <field name="crop_type_id"/>-->
+<!--                                            <field name="crop_category_id"/>-->
+<!--                                        </group>-->
+<!--                                    </sheet>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
+                        <!-- Damages Tab -->
+                        <page string="Damages">
+                            <field name="damage_id">
+                                <tree editable="bottom" class="custom-damage-tree">
+                                    <field name="name"/>
+                                    <field name="type_id"/>
+                                    <field name="stage_id"/>
+                                    <field name="percentage"/>
+                                    <field name="extent"/>
+                                    <field name="date"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="name" required="1"/>
+                                            <field name="type_id"/>
+                                            <field name="stage_id"/>
+                                            <field name="percentage"/>
+                                            <field name="extent"/>
+                                            <field name="date"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Cultivation Details -->
+    <record id="action_cultivation_list" model="ir.actions.act_window">
+        <field name="name">Cultivation Details</field>
+        <field name="res_model">g2p.cultivation.details</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="g2p_farmer_registry.view_cultivation_details_tree"/>  <!-- add this -->
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- Cultivation Details Menu -->
+    <menuitem
+            id="menu_cultivation_details"
+            name="Cultivation Details"
+            action="g2p_farmer_registry.action_cultivation_list"
+            web_icon="g2p_farmer_registry,static/description/cultivation.png"
+            sequence="3"
+    />
+
+
+    <!-- Cultivation Status - Editable Tree -->
+    <record id="view_status_cultivation_tree" model="ir.ui.view">
+        <field name="name">status.cultivation.tree</field>
+        <field name="model">status.cultivation</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">  <!-- editable at bottom or top -->
+                <field name="name" required="1"/>
+                <field name="code" required="1"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 1. Cultivation Status - editable list -->
+    <record id="action_status_cultivation" model="ir.actions.act_window">
+        <field name="name">Cultivation Status</field>
+        <field name="res_model">status.cultivation</field>
+        <field name="view_mode">tree</field>  <!-- only list view for now -->
+        <field name="domain">[]</field>
+        <field name="context">{'tree_view_ref': 'g2p_farmer_registry.view_status_cultivation_tree'}</field>
+    </record>
+
+    <menuitem
+            id="menu_status_cultivation"
+            name="Cultivation Details Status"
+            parent="menu_status_management"
+            action="action_status_cultivation"
+            sequence="10"
+    />
+
+</odoo>

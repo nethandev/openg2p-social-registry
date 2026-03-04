@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- 1. Tree / List View -->
+    <record id="view_gn_division_tree" model="ir.ui.view">
+        <field name="name">g2p.gn.division.tree</field>
+        <field name="model">g2p.gn.division</field>
+        <field name="arch" type="xml">
+            <tree string="GN Divisions">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="district_id"/>
+<!--                <field name="asc_code"/>-->
+                <field name="asc_id" optional="hide"/>
+                <field name="o_code" optional="hide"/>
+                <field name="lcode" optional="hide"/>
+                <field name="sinhala_name" optional="hide"/>
+                <field name="tamil_name" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 2. Form View -->
+    <record id="view_gn_division_form" model="ir.ui.view">
+        <field name="name">g2p.gn.division.form</field>
+        <field name="model">g2p.gn.division</field>
+        <field name="arch" type="xml">
+            <form string="GN Division">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code" required="1"/>
+                            <field name="sinhala_name"/>
+                            <field name="tamil_name"/>
+                        </group>
+                        <group>
+                            <field name="district_id"/>
+<!--                            <field name="district_code" readonly="1"/>-->
+                            <field name="asc_id"/>
+<!--                            <field name="asc_code" readonly="1"/>-->
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="o_code"/>
+                            <field name="lcode"/>
+                        </group>
+                        <group>
+                            <field name="active" invisble="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- 3. Search View (basic) -->
+    <record id="view_gn_division_search" model="ir.ui.view">
+        <field name="name">g2p.gn.division.search</field>
+        <field name="model">g2p.gn.division</field>
+        <field name="arch" type="xml">
+            <search string="GN Divisions">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="sinhala_name"/>
+                <field name="tamil_name"/>
+                <field name="district_id"/>
+                <field name="asc_id"/>
+
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="District" name="group_district" context="{'group_by': 'district_id'}"/>
+                    <filter string="ASC" name="group_asc" context="{'group_by': 'asc_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- 4. Action -->
+    <record id="action_gn_division" model="ir.actions.act_window">
+        <field name="name">GN Divisions</field>
+        <field name="res_model">g2p.gn.division</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_gn_division_tree"/>
+        <field name="search_view_id" ref="view_gn_division_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new GN Division!
+            </p>
+            <p>
+                GN Divisions are the smallest administrative units.
+            </p>
+        </field>
+    </record>
+
+    <!-- 5. Menu Item (under Configuration) -->
+    <menuitem
+        id="menu_gn_division"
+        name="GN Divisions"
+        parent="g2p_registry_base.g2p_configuration_menu_root"
+        action="action_gn_division"
+        sequence="6"
+    />
+
+</odoo>

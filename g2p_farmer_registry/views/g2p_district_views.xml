@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- 1. Inherit & extend the existing TREE view -->
+    <record id="view_district_config_tree_inherit" model="ir.ui.view">
+        <field name="name">g2p.district.config.tree.inherit</field>
+        <field name="model">g2p.district</field>
+        <field name="inherit_id" ref="g2p_registry_base.view_district_config_tree"/>
+        <field name="arch" type="xml">
+
+            <!-- Already removed state_id in your code – keep it -->
+            <xpath expr="//field[@name='state_id']" position="replace"/>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="editable"></attribute>
+            </xpath>
+
+            <!-- Add your new fields after name -->
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="district_sequence"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="region_id" string="Province"/>
+                <field name="area_km2"/>
+                <field name="pop_density"/>
+                <field name="sinhala_name"/>
+                <field name="tamil_name"/>
+                <!-- Bank fields – optional in tree if too many columns; can hide some -->
+                <field name="bank_id" optional="show"/>
+                <!--                <field name="bank_code" optional="show"/>-->
+                <field name="branch_id" optional="show"/>
+                <!--                <field name="branch_code" optional="show"/>-->
+                <field name="account_no" optional="show"/>
+                <field name="active" widget="boolean_toggle" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- 2. Create a nice FORM view -->
+    <record id="view_district_config_form" model="ir.ui.view">
+        <field name="name">g2p.district.config.form</field>
+        <field name="model">g2p.district</field>
+        <field name="arch" type="xml">
+            <form string="District">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(g2p_farmer_registry.action_g2p_divisional_secretariat)d"
+                                type="action"
+                                string="Divisional Secretariats"
+                                class="oe_stat_button"
+                                icon="fa-building-o">
+                            <field name="secretariat_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="district_sequence"/>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="code"/>
+                            <field name="region_id" string="Province"/>
+                        </group>
+                        <group>
+                            <field name="area_km2" widget="float" options="{'unit': 'km²'}"/>
+                            <field name="pop_density" widget="float" options="{'unit': 'people/km²'}"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group string="Multilingual Names">
+                        <field name="sinhala_name"/>
+                        <field name="tamil_name"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Bank Details">
+                            <group>
+                                <field name="bank_id"/>
+                                <!--                                <field name="bank_code" readonly="1"/>-->
+                                <field name="branch_id"
+                                       domain="[('bank_id', '=', bank_id)]"/>  <!-- optional: filter branches by selected bank -->
+                                <!--                                <field name="branch_code" readonly="1"/>-->
+                                <field name="account_no"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- 3. Link the form view to the existing action (so tree → form works) -->
+    <record id="action_district_config_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="g2p_registry_base.action_district_config"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_district_config_form"/>
+        <field name="sequence" eval="2"/>
+    </record>
+
+    <!--    &lt;!&ndash; Modify the existing action's view_mode without resetting name &ndash;&gt;-->
+    <record id="g2p_registry_base.action_district_config" model="ir.actions.act_window">
+        <field name="name">District</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.ui.menu" id="g2p_registry_base.menu_district_config">
+        <field name="name">District</field>
+        <field name="sequence">2</field>
+    </record>
+
+
+</odoo>

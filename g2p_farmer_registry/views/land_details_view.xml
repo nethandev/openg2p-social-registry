@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- 1. Tree view for Land Details -->
+    <record id="g2p_farmer_registry.view_land_details_tree" model="ir.ui.view">
+        <field name="name">g2p.land.details.tree</field>
+        <field name="model">g2p.land.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="land_sequence"/>
+                <field name="land_number"/>
+                <field name="name" optional="hide"/>
+                <field name="district_id"/>
+                <field name="asc_id"/>
+                <field name="plr_number"/>
+                <field name="irrigation"/>
+                <field name="land_extent"/>
+                <field name="partner_id"/>
+                <field name="land_owner" optional="hide"/>
+                <field name="is_paddy_land" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 1. Form view for Land Details -->
+    <record id="g2p_farmer_registry.view_land_details_form" model="ir.ui.view">
+        <field name="name">g2p.land.details.form</field>
+        <field name="model">g2p.land.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="land_sequence"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="land_number"/>
+                            <field name="district_id"/>
+                            <field name="asc_id"/>
+                            <field name="plr_number"/>
+                            <field name="irrigation"/>
+                            <field name="land_extent"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="land_owner"/>
+                            <field name="land_type"/>
+                            <field name="is_paddy_land" invisible="1"/>
+                            <field name="gn_division_id"/>
+<!--                            <field name="gn_division"/>-->
+                            <field name="new_dos"/>
+                            <field name="old_dos"/>
+                        </group>
+                        <field name="status_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view for land details -->
+    <record id="g2p_farmer_registry.view_land_details_search" model="ir.ui.view">
+        <field name="name">g2p.land.details.search</field>
+        <field name="model">g2p.land.details</field>
+        <field name="arch" type="xml">
+            <search string="Land Details">
+                <!-- Required: Add at least one (or more) <field> for schema validation -->
+                <field name="land_number"/>          <!-- primary searchable field -->
+                <field name="partner_id"/>            <!-- farmer name/ID -->
+                <field name="district_id"/>           <!-- useful for search too -->
+                <field name="asc_id"/>                <!-- helps with group-by validation -->
+
+                <!-- Your filter -->
+                <filter string="Paddy Land Only"
+                        name="paddy_land"
+                        domain="[('is_paddy_land', '=', True)]"/>
+
+                <!-- Your group by section -->
+                <group expand="0" string="Group By">
+                    <filter string="ASC"
+                            name="group_by_asc"
+                            context="{'group_by': 'asc_id'}"/>
+                    <filter string="Farmer"
+                            name="group_by_farmer"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter string="District"
+                            name="group_by_district"
+                            context="{'group_by': 'district_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Land Details List Action -->
+    <record id="action_land_details_list" model="ir.actions.act_window">
+        <field name="name">Land Details</field>
+        <field name="res_model">g2p.land.details</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="g2p_farmer_registry.view_land_details_tree"/>
+        <field name="search_view_id" ref="g2p_farmer_registry.view_land_details_search"/>
+        <field name="context">{'search_default_paddy_land': 1}</field>
+    </record>
+
+
+    <!--Land Details Menu-->
+    <menuitem
+            id="menu_land_details"
+            name="Land Details"
+            action="g2p_farmer_registry.action_land_details_list"
+            web_icon="g2p_farmer_registry,static/description/land.png"
+            sequence="2"
+    />
+
+</odoo>

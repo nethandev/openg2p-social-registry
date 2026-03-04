@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!-- district_sequence -->
+    <record id="seq_district_code" model="ir.sequence">
+        <field name="name">District Code</field>
+        <field name="code">g2p.district</field>
+        <field name="prefix">DIS</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+        <field name="implementation">standard</field>
+    </record>
+
+<!-- asc_sequence -->
+        <record id="seq_asc_code" model="ir.sequence">
+            <field name="name">ASC Code</field>
+            <field name="code">g2p.agrarian.service.center</field>
+            <field name="prefix">ASC</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+            <field name="implementation">standard</field>
+        </record>
+
+<!-- land_sequence -->
+        <record id="seq_land_code" model="ir.sequence">
+            <field name="name">Land Code</field>
+            <field name="code">g2p.land.details</field>
+            <field name="prefix">L</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+            <field name="implementation">standard</field>
+        </record>
+
+</odoo>

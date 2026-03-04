@@ -1,0 +1,23 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+g2p_cultivation_details,Region cultivation details,model_g2p_cultivation_details,,1,1,1,1
+g2p_land_details,Region land details,model_g2p_land_details,,1,1,1,1
+g2p_season,Region season,model_g2p_season,,1,1,1,1
+access_g2p_cash_grant_detail,g2p.cash.grant.detail,model_g2p_cash_grant_detail,base.group_user,1,1,1,1
+access_g2p_subsidy_detail,g2p.subsidy.detail,model_g2p_subsidy_detail,base.group_user,1,1,1,1
+acccess_g2p_flood_damage_subsidy,g2p.flood.damage.subsidy,model_g2p_flood_damage_subsidy,base.group_user,1,1,1,1
+acccess_status_cultivation,status.cultivation,model_status_cultivation,base.group_user,1,1,1,1
+acccess_status_subsidy,status.subsidy,model_status_subsidy,base.group_user,1,1,1,1
+acccess_status_grant,status.grant,model_status_grant,base.group_user,1,1,1,1
+acccess_status_land_details,status.land.details,model_status_land_details,base.group_user,1,1,1,1
+acccess_status_flood,status.flood,model_status_flood,base.group_user,1,1,1,1
+acccess_g2p_gn_division,g2p.gn.division,model_g2p_gn_division,base.group_user,1,1,1,1
+access_g2p_bank_branch,g2p.bank.branch,model_g2p_bank_branch,base.group_user,1,1,1,1
+access_g2p_agrarian_service_center,g2p.agrarian.service.center,model_g2p_agrarian_service_center,base.group_user,1,1,1,1
+access_g2p_agrarian_research_production_assistant,g2p.agrarian.research.production.assistant,model_g2p_agrarian_research_production_assistant,base.group_user,1,1,1,1
+access_g2p_crop_category,g2p.crop.category,model_g2p_crop_category,base.group_user,1,1,1,1
+access_g2p_crop_type,g2p.crop.type,model_g2p_crop_type,base.group_user,1,1,1,1
+access_g2p_crop,g2p.crop,model_g2p_crop,base.group_user,1,1,1,1
+access_g2p_damage,g2p.damage,model_g2p_damage,base.group_user,1,1,1,1
+access_g2p_damage_type,g2p.damage.type,model_g2p_damage_type,base.group_user,1,1,1,1
+access_g2p_damage_stage,g2p.damage.stage,model_g2p_damage_stage,base.group_user,1,1,1,1
+access_g2p_divisional_secretariat,g2p.divisional.secretariat,model_g2p_divisional_secretariat,base.group_user,1,1,1,1

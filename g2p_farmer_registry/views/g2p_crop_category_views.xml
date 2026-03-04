@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_g2p_crop_category_tree" model="ir.ui.view">
+        <field name="name">g2p.crop.category.tree</field>
+        <field name="model">g2p.crop.category</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_g2p_crop_category_form" model="ir.ui.view">
+        <field name="name">g2p.crop.category.form</field>
+        <field name="model">g2p.crop.category</field>
+        <field name="arch" type="xml">
+            <form string="Crop Category">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_g2p_crop_category" model="ir.actions.act_window">
+        <field name="name">Crop Categories</field>
+        <field name="res_model">g2p.crop.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_g2p_crop_root"
+            name="Crops Configuration"
+            parent="g2p_registry_base.g2p_configuration_menu_root"
+            sequence="11"
+    />
+
+    <menuitem
+            id="menu_g2p_crop_category"
+            name="Crop Categories"
+            parent="menu_g2p_crop_root"
+            action="action_g2p_crop_category"
+            sequence="30"
+    />
+</odoo>

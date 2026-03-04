@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Bank Branch Tree -->
+    <record id="view_bank_branch_tree" model="ir.ui.view">
+        <field name="name">g2p.bank.branch.tree</field>
+        <field name="model">g2p.bank.branch</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="bank_id"/>
+                <field name="branch_code"/>
+                <field name="branch_name"/>
+                <field name="district_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Bank Branch Form -->
+    <record id="view_bank_branch_form" model="ir.ui.view">
+        <field name="name">g2p.bank.branch.form</field>
+        <field name="model">g2p.bank.branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="bank_id"/>
+<!--                            <field name="bank_code"/>-->
+                            <field name="branch_name"/>
+                            <field name="branch_code"/>
+                            <field name="branch_address"/>
+                            <field name="district_id"/>
+                        </group>
+                        <group>
+                            <field name="tel_01"/>
+                            <field name="tel_02"/>
+                            <field name="tel_03"/>
+                            <field name="tel_04"/>
+                            <field name="fax_no"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Bank Branch Action -->
+    <record id="action_bank_branch" model="ir.actions.act_window">
+        <field name="name">Bank Branches</field>
+        <field name="res_model">g2p.bank.branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_bank_branch"
+              name="Bank Branch"
+              parent="g2p_registry_base.g2p_configuration_menu_root"
+              action="action_bank_branch"
+              sequence="9"/>
+
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_g2p_crop_type_tree" model="ir.ui.view">
+        <field name="name">g2p.crop.type.tree</field>
+        <field name="model">g2p.crop.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_g2p_crop_type_form" model="ir.ui.view">
+        <field name="name">g2p.crop.type.form</field>
+        <field name="model">g2p.crop.type</field>
+        <field name="arch" type="xml">
+            <form string="Crop Type">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_g2p_crop_type" model="ir.actions.act_window">
+        <field name="name">Crop Types</field>
+        <field name="res_model">g2p.crop.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_g2p_crop_type"
+        name="Crop Types"
+        parent="menu_g2p_crop_root"
+        action="action_g2p_crop_type"
+        sequence="20"
+    />
+</odoo>

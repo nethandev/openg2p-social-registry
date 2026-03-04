@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Inherit the original tree view and remove editable -->
+    <!--    <record id="view_region_tree_inherit" model="ir.ui.view">-->
+    <!--        <field name="name">g2p.region.tree.inherit.noeditable</field>-->
+    <!--        <field name="model">g2p.region</field>-->
+    <!--        <field name="inherit_id" ref="g2p_social_registry.view_region_tree"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <tree position="attributes">-->
+    <!--                <attribute name="editable">remove</attribute>-->
+    <!--            </tree>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!-- Redefine tree view – no editable -->
+    <record id="g2p_social_registry.view_region_tree" model="ir.ui.view">
+        <field name="name">g2p.region.tree</field>
+        <field name="model">g2p.region</field>
+        <field name="priority" eval="20"/>  <!-- higher priority to override original -->
+        <field name="arch" type="xml">
+            <tree>  <!-- no editable attribute → read-only list -->
+                <field name="name"/>
+                <field name="code"/>
+<!--                <field name="iso_code" string="ISO Code"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_region_form" model="ir.ui.view">
+        <field name="name">g2p.region.form</field>
+        <field name="model">g2p.region</field>
+        <field name="arch" type="xml">
+            <form string="Region">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="province_id" />
+                            <field name="name" required="1"/>
+                            <field name="code" required="1"/>
+                            <field name="sinhala_name"/>
+                            <field name="tamil_name"/>
+<!--                            <field name="iso_code" string="ISO Code"/>-->
+                        </group>
+                        <group/>
+                    </group>
+<!--                    <group string="Additional Information">-->
+<!--                        <field name="capitol"/>-->
+<!--                        <field name="year_created"/>-->
+<!--                        <field name="area_km2"/>-->
+<!--                        <field name="population"/>-->
+<!--                        <field name="pop_density"/>-->
+<!--                    </group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Extend original action - add form mode -->
+    <record id="g2p_social_registry.action_region" model="ir.actions.act_window">
+        <field name="name">Province</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Link form view to the action -->
+    <record id="action_region_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="g2p_social_registry.action_region"/>
+        <field name="view_id" ref="view_region_form"/>
+        <field name="view_mode">form</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record model="ir.ui.menu" id="g2p_social_registry.menu_region">
+        <field name="name">Province</field>
+        <field name="sequence">1</field>
+    </record>
+
+</odoo>

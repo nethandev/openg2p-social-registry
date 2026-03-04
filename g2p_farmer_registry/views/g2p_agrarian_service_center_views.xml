@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Special tree view for smart button (limited columns) -->
+    <record id="g2p_farmer_registry.view_land_details_smart_button_tree" model="ir.ui.view">
+        <field name="name">g2p.land.details.smart.button.tree</field>
+        <field name="model">g2p.land.details</field>
+        <field name="arch" type="xml">
+            <tree string="Land Details">
+                <field name="land_number" string="Land ID"/>
+                <!--                <field name="gn_division" string="GN Division"/>-->
+                <field name="plr_number" string="PLR Number"/>
+                <field name="land_extent" string="Land Extent (HA)"/>
+                <field name="irrigation" string="Irrigation"/>
+                <field name="partner_id" string="Farmer"/>
+                <field name="land_owner" string="Land Owner"/>
+                <field name="asc_id" string="ASC"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_land_details_filtered" model="ir.actions.act_window">
+        <field name="name">Land Details</field>
+        <field name="res_model">g2p.land.details</field>
+        <field name="view_mode">tree</field>
+        <!-- Use the special limited-columns tree view for smart button -->
+        <field name="view_id" ref="g2p_farmer_registry.view_land_details_smart_button_tree"/>
+        <field name="context">{'default_asc_id': active_id}
+        </field>
+    </record>
+    <!-- ASC Tree -->
+    <record id="view_asc_tree" model="ir.ui.view">
+        <field name="name">g2p.agrarian.service.center.tree</field>
+        <field name="model">g2p.agrarian.service.center</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="asc_sequence"/>
+                <field name="asc_code"/>
+                <field name="asc_name"/>
+                <field name="district_id"/>
+                <field name="land_count"/>
+                <field name="total_land_extent"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ASC Form -->
+    <record id="view_asc_form" model="ir.ui.view">
+        <field name="name">g2p.agrarian.service.center.form</field>
+        <field name="model">g2p.agrarian.service.center</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(g2p_farmer_registry.action_land_details_filtered)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-map-marker"
+                                context="{'default_asc_id': id, 'search_default_paddy_land': 1, 'search_domain': [('asc_id', '=', id)]}">
+                            <field string="Lands" name="land_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="asc_sequence"/>
+
+                    <group>
+                        <group>
+                            <field name="asc_name"/>
+                            <field name="asc_code"/>
+                            <field name="asc_latitude"/>
+                            <field name="asc_longitude"/>
+                        </group>
+                        <group>
+                            <field name="sinhala_name"/>
+                            <field name="tamil_name"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group invisible="1">
+                        <field name="land_count" readonly="1"/>
+                        <field name="total_land_extent" readonly="1"/>
+                    </group>
+
+                    <!-- Optional: show list of lands -->
+                    <notebook>
+                        <page string="Land Details">
+                            <field name="land_detail_ids">
+                                <tree>
+                                    <field name="land_number" string="Land ID"/>
+                                    <field name="gn_division_id" string="GN Division"/>
+                                    <field name="plr_number"/>
+                                    <field name="land_extent"/>
+                                    <field name="irrigation"/>
+                                    <field name="partner_id"/>
+                                    <field name="land_owner"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ASC Action -->
+    <record id="action_asc" model="ir.actions.act_window">
+        <field name="name">Agrarian Service Centers</field>
+        <field name="res_model">g2p.agrarian.service.center</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_asc"
+              name="ASC"
+              parent="g2p_registry_base.g2p_configuration_menu_root"
+              action="action_asc"
+              sequence="4"/>
+
+</odoo>

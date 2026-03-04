@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <!--  <data >  -->
+    <record id="prov_western" model="g2p.region">
+        <field name="name">Western</field>
+        <field name="code">W</field>
+        <field name="iso_code">LK-1</field>
+<!--        <field name="capitol">Colombo</field>-->
+<!--        <field name="year_created">1833</field>-->
+<!--        <field name="area_km2">3593</field>-->
+<!--        <field name="population">5821710</field>-->
+<!--        <field name="pop_density">1620</field>-->
+    </record>
+    <record id="prov_central" model="g2p.region">
+        <field name="name">Central</field>
+        <field name="code">C</field>
+        <field name="iso_code">LK-2</field>
+<!--        <field name="capitol">Kandy</field>-->
+<!--        <field name="year_created">1833</field>-->
+<!--        <field name="area_km2">5575</field>-->
+<!--        <field name="population">2558716</field>-->
+<!--        <field name="pop_density">459</field>-->
+    </record>
+    <record id="prov_southern" model="g2p.region">
+        <field name="name">Southern</field>
+        <field name="code">STH</field>
+        <field name="iso_code">LK-3</field>
+<!--        <field name="capitol">Galle</field>-->
+<!--        <field name="year_created">1833</field>-->
+<!--        <field name="area_km2">5383</field>-->
+<!--        <field name="population">2464732</field>-->
+<!--        <field name="pop_density">458</field>-->
+    </record>
+    <record id="prov_northern" model="g2p.region">
+        <field name="name">Northern</field>
+        <field name="code">N</field>
+        <field name="iso_code">LK-4</field>
+<!--        <field name="capitol">Jaffna</field>-->
+<!--        <field name="year_created">1833</field>-->
+<!--        <field name="area_km2">8290</field>-->
+<!--        <field name="population">1058762</field>-->
+<!--        <field name="pop_density">128</field>-->
+    </record>
+    <record id="prov_eastern" model="g2p.region">
+        <field name="name">Eastern</field>
+        <field name="code">e</field>
+        <field name="iso_code">LK-5</field>
+<!--        <field name="capitol">Trincomalee</field>-->
+<!--        <field name="year_created">1833</field>-->
+<!--        <field name="area_km2">9361</field>-->
+<!--        <field name="population">1551381</field>-->
+<!--        <field name="pop_density">166</field>-->
+    </record>
+    <record id="prov_north_western" model="g2p.region">
+        <field name="name">North Western</field>
+        <field name="code">NW</field>
+        <field name="iso_code">LK-6</field>
+<!--        <field name="capitol">Kurunegala</field>-->
+<!--        <field name="year_created">1845</field>-->
+<!--        <field name="area_km2">7506</field>-->
+<!--        <field name="population">2370075</field>-->
+<!--        <field name="pop_density">316</field>-->
+    </record>
+    <record id="prov_north_central" model="g2p.region">
+        <field name="name">North Central</field>
+        <field name="code">NC</field>
+        <field name="iso_code">LK-7</field>
+<!--        <field name="capitol">Anuradhapura</field>-->
+<!--        <field name="year_created">1873</field>-->
+<!--        <field name="area_km2">9741</field>-->
+<!--        <field name="population">1259567</field>-->
+<!--        <field name="pop_density">129</field>-->
+    </record>
+    <record id="prov_uva" model="g2p.region">
+        <field name="name">Uva</field>
+        <field name="code">U</field>
+        <field name="iso_code">LK-8</field>
+<!--        <field name="capitol">Badulla</field>-->
+<!--        <field name="year_created">1886</field>-->
+<!--        <field name="area_km2">8335</field>-->
+<!--        <field name="population">1259900</field>-->
+<!--        <field name="pop_density">151</field>-->
+    </record>
+    <record id="prov_sabaragamuwa" model="g2p.region">
+        <field name="name">Sabaragamuwa</field>
+        <field name="code">S</field>
+        <field name="iso_code">LK-9</field>
+<!--        <field name="capitol">Ratnapura</field>-->
+<!--        <field name="year_created">1889</field>-->
+<!--        <field name="area_km2">4921</field>-->
+<!--        <field name="population">1918880</field>-->
+<!--        <field name="pop_density">390</field>-->
+    </record>
+
+    <record id="dist_jaffna" model="g2p.district">
+        <field name="name">Jaffna</field>
+        <field name="code">LK41</field>
+        <field name="region_id" ref="prov_northern"/>
+        <field name="area_km2">1025</field>
+        <field name="pop_density">628</field>
+    </record>
+    <record id="dist_kilinochchi" model="g2p.district">
+        <field name="name">Kilinochchi</field>
+        <field name="code">LK42</field>
+        <field name="region_id" ref="prov_northern"/>
+        <field name="area_km2">1279</field>
+        <field name="pop_density">94</field>
+    </record>
+    <record id="dist_mannar" model="g2p.district">
+        <field name="name">Mannar</field>
+        <field name="code">LK43</field>
+        <field name="region_id" ref="prov_northern"/>
+        <field name="area_km2">1996</field>
+        <field name="pop_density">53</field>
+    </record>
+    <record id="dist_mullaitivu" model="g2p.district">
+        <field name="name">Mullaitivu</field>
+        <field name="code">LK45</field>
+        <field name="region_id" ref="prov_northern"/>
+        <field name="area_km2">2617</field>
+        <field name="pop_density">38</field>
+    </record>
+    <record id="dist_vavuniya" model="g2p.district">
+        <field name="name">Vavuniya</field>
+        <field name="code">LK44</field>
+        <field name="region_id" ref="prov_northern"/>
+        <field name="area_km2">1967</field>
+        <field name="pop_density">92</field>
+    </record>
+    <record id="dist_anuradhapura" model="g2p.district">
+        <field name="name">Anuradhapura</field>
+        <field name="code">LK71</field>
+        <field name="region_id" ref="prov_north_central"/>
+        <field name="area_km2">7179</field>
+        <field name="pop_density">128</field>
+    </record>
+    <record id="dist_polonnaruwa" model="g2p.district">
+        <field name="name">Polonnaruwa</field>
+        <field name="code">LK72</field>
+        <field name="region_id" ref="prov_north_central"/>
+        <field name="area_km2">3293</field>
+        <field name="pop_density">131</field>
+    </record>
+    <record id="dist_gampaha" model="g2p.district">
+        <field name="name">Gampaha</field>
+        <field name="code">LK12</field>
+        <field name="region_id" ref="prov_western"/>
+        <field name="area_km2">1387</field>
+        <field name="pop_density">1711</field>
+    </record>
+    <record id="dist_colombo" model="g2p.district">
+        <field name="name">Colombo</field>
+        <field name="code">LK11</field>
+        <field name="region_id" ref="prov_western"/>
+        <field name="area_km2">699</field>
+        <field name="pop_density">3417</field>
+    </record>
+    <record id="dist_kalutara" model="g2p.district">
+        <field name="name">Kalutara</field>
+        <field name="code">LK13</field>
+        <field name="region_id" ref="prov_western"/>
+        <field name="area_km2">1598</field>
+        <field name="pop_density">772</field>
+    </record>
+    <record id="dist_matale" model="g2p.district">
+        <field name="name">Matale</field>
+        <field name="code">LK22</field>
+        <field name="region_id" ref="prov_central"/>
+        <field name="area_km2">1993</field>
+        <field name="pop_density">247</field>
+    </record>
+    <record id="dist_kandy" model="g2p.district">
+        <field name="name">Kandy</field>
+        <field name="code">LK21</field>
+        <field name="region_id" ref="prov_central"/>
+        <field name="area_km2">1940</field>
+        <field name="pop_density">715</field>
+    </record>
+    <record id="dist_nuwara_eliya" model="g2p.district">
+        <field name="name">Nuwara Eliya</field>
+        <field name="code">LK23</field>
+        <field name="region_id" ref="prov_central"/>
+        <field name="area_km2">1741</field>
+        <field name="pop_density">414</field>
+    </record>
+    <record id="dist_puttalam" model="g2p.district">
+        <field name="name">Puttalam</field>
+        <field name="code">LK33</field>
+        <field name="region_id" ref="prov_north_western"/>
+        <field name="area_km2">3072</field>
+        <field name="pop_density">264</field>
+    </record>
+    <record id="dist_kurunegala" model="g2p.district">
+        <field name="name">Kurunegala</field>
+        <field name="code">LK32</field>
+        <field name="region_id" ref="prov_north_western"/>
+        <field name="area_km2">4816</field>
+        <field name="pop_density">348</field>
+    </record>
+    <record id="dist_kegalle" model="g2p.district">
+        <field name="name">Kegalle</field>
+        <field name="code">LK92</field>
+        <field name="region_id" ref="prov_sabaragamuwa"/>
+        <field name="area_km2">1693</field>
+        <field name="pop_density">497</field>
+    </record>
+    <record id="dist_ratnapura" model="g2p.district">
+        <field name="name">Ratnapura</field>
+        <field name="code">LK91</field>
+        <field name="region_id" ref="prov_sabaragamuwa"/>
+        <field name="area_km2">3275</field>
+        <field name="pop_density">334</field>
+    </record>
+    <record id="dist_trincomalee" model="g2p.district">
+        <field name="name">Trincomalee</field>
+        <field name="code">LK53</field>
+        <field name="region_id" ref="prov_eastern"/>
+        <field name="area_km2">2727</field>
+        <field name="pop_density">150</field>
+    </record>
+    <record id="dist_batticaloa" model="g2p.district">
+        <field name="name">Batticaloa</field>
+        <field name="code">LK52</field>
+        <field name="region_id" ref="prov_eastern"/>
+        <field name="area_km2">2854</field>
+        <field name="pop_density">201</field>
+    </record>
+    <record id="dist_ampara" model="g2p.district">
+        <field name="name">Ampara</field>
+        <field name="code">LK51</field>
+        <field name="region_id" ref="prov_eastern"/>
+        <field name="area_km2">4415</field>
+        <field name="pop_density">153</field>
+    </record>
+    <record id="dist_badulla" model="g2p.district">
+        <field name="name">Badulla</field>
+        <field name="code">LK81</field>
+        <field name="region_id" ref="prov_uva"/>
+        <field name="area_km2">2861</field>
+        <field name="pop_density">287</field>
+    </record>
+    <record id="dist_monaragala" model="g2p.district">
+        <field name="name">Monaragala</field>
+        <field name="code">LK82</field>
+        <field name="region_id" ref="prov_uva"/>
+        <field name="area_km2">5639</field>
+        <field name="pop_density">81</field>
+    </record>
+    <record id="dist_hambantota" model="g2p.district">
+        <field name="name">Hambantota</field>
+        <field name="code">LK63</field>
+        <field name="region_id" ref="prov_southern"/>
+        <field name="area_km2">2609</field>
+        <field name="pop_density">239</field>
+    </record>
+    <record id="dist_matara" model="g2p.district">
+        <field name="name">Matara</field>
+        <field name="code">LK62</field>
+        <field name="region_id" ref="prov_southern"/>
+        <field name="area_km2">1283</field>
+        <field name="pop_density">637</field>
+    </record>
+    <record id="dist_galle" model="g2p.district">
+        <field name="name">Galle</field>
+        <field name="code">LK61</field>
+        <field name="region_id" ref="prov_southern"/>
+        <field name="area_km2">1652</field>
+        <field name="pop_density">655</field>
+    </record>
+    <!--  </data>  -->
+</odoo>

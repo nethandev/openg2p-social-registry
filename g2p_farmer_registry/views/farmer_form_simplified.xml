@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--    Form view changes-->
+    <record id="view_farmer_form_simplified" model="ir.ui.view">
+        <field name="name">g2p.farmer.form.simplified</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="g2p_auth_id_oidc.view_individuals_ids_auth_form"/>
+        <field name="priority" eval="20"/>  <!-- higher than most other inherited views -->
+
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+
+                <button name="action_view_farmer_bank_accounts"
+                        type="object"
+                        string="Banks"
+                        class="oe_stat_button"
+                        icon="fa-university"
+                        invisible="not is_farmer">   <!-- only show for farmers -->
+
+                    <field name="bank_account_count"
+                           widget="statinfo"
+                           string="Bank Accounts"/>
+
+                </button>
+
+            </xpath>
+            <xpath expr="//div[contains(@class, 'oe_chatter')]" position="replace"/>
+
+            <!-- 1. Make sure 'disabled' exists no matter what -->
+            <field name="disabled" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="family_name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="addl_name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="lang" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="given_name" position="replace">
+                <group name="farmer_name_details">
+                    <field name="name" string="Farmer Name"/>
+                    <field name="farmer_id" string="Farmer ID"/>
+                </group>
+
+            </field>
+            <xpath expr="//group[@name='farmer_name_details']" position="after">
+                <group name="farmer_details">
+                    <field name="nic_number"/>
+                    <!--                <field name="nic_check"/>-->
+                    <field name="address"/>
+                    <field name="is_farmer" invisible="1"/>
+                </group>
+            </xpath>
+
+            <!--            invisible tags-->
+            <xpath expr="//field[@name='tags_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//label[@for='tags_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!--            invisible is duplicated and is encrypted-->
+            <xpath expr="//field[@name='is_duplicated']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+<!--            <xpath expr="//field[@name='is_encrypted']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+
+            <!--            invisible pages-->
+            <xpath expr="//page[@name='ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='relationships']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='groups']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='banks']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+<!--            <xpath expr="//page[@name='addl']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='documents']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+            <xpath expr="//page[@name='basic_info']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!--            invisible registration date-->
+            <field name="registration_date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <!-- If the field doesn't exist yet in this view, add it at form root -->
+            <xpath expr="//form" position="inside">
+                <field name="disabled" invisible="1" nolabel="1"/>
+            </xpath>
+
+            <notebook>
+                <page string="Land Details" name="land_details">
+                    <field name="land_details_ids" context="{'default_partner_id': id}">
+                        <tree>
+                            <field name="land_number" width="100"/>
+                            <field name="district_id" width="100"/>
+                            <field name="asc_id" width="100"/>
+                            <field name="plr_number" width="100"/>
+                            <field name="irrigation" width="100"/>
+                            <field name="land_extent" width="200"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="land_number"/>
+                                <field name="district_id"/>
+                                <field name="asc_id"/>
+                                <field name="plr_number"/>
+                                <field name="irrigation"/>
+                                <field name="land_extent"/>
+                                <field name="partner_id" invisible="1" readonly="1"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+                <page string="Cultivation Details" name="cultivation_details">
+                    <field name="cultivation_details_ids" context="{'default_partner_id': id}">
+                        <tree>
+                            <field name="season_id" width="100"/>
+                            <field name="district_id" width="100"/>
+                            <field name="asc_id" width="100"/>
+                            <field name="plr_number" width="100"/>
+                            <field name="irrigation" width="100"/>
+                            <field name="land_extent" width="200"/>
+                            <field name="cultivated_extend" width="200"/>
+                            <field name="cultivated_date" width="200"/>
+                            <field name="data_entered" width="100"/>
+                            <field name="last_update" width="100"/>
+                            <field name="status_id" width="100"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="land_id"/>
+                                <field name="district_id"/>
+                                <field name="asc_id"/>
+                                <field name="plr_number"/>
+                                <field name="irrigation"/>
+                                <field name="land_extent"/>
+                                <field name="cultivated_extend"/>
+                                <field name="cultivated_date"/>
+                                <field name="data_entered"/>
+                                <field name="last_update"/>
+                                <field name="season_id"/>
+                                <field name="status_id"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+                <page string="Cash Grant Details" name="cash_grant_details">
+                    <field name="cash_grand_detail_ids" context="{'default_partner_id': id}">
+                        <tree create="false" delete="false" edit="false">
+                            <field name="season_id" width="100"/>
+                            <field name="subsidy_type" width="100"/>
+                            <field name="district_id" width="100"/>
+                            <field name="asc_id" width="100"/>
+                            <field name="plr_number" width="100"/>
+                            <field name="land_extent" width="200"/>
+                            <field name="bank_id" width="100" string="Bank Name"/>
+                            <field name="branch_id" width="100" string="Branch Name"/>
+                            <field name="account_detail" width="100"/>
+                            <field name="slip_number" width="100"/>
+                            <field name="amount_quantity" width="100"/>
+                            <field name="status_id" width="100"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="season_id"/>
+                                <field name="subsidy_type"/>
+                                <field name="district_id"/>
+                                <field name="asc_id"/>
+                                <field name="plr_number"/>
+                                <field name="land_extent"/>
+                                <field name="bank_id"/>
+                                <field name="branch_id"/>
+                                <field name="account_detail"/>
+                                <field name="slip_number"/>
+                                <field name="amount_quantity"/>
+                                <field name="status_id"/>
+                                <field name="partner_id" invisible="1" readonly="1"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+
+                <page string="Subsidy Details" name="subsidy_details">
+                    <field name="subsidy_detail_ids" context="{'default_partner_id': id}">
+                        <tree create="false" delete="false" edit="false">
+                            <field name="season_id" width="100"/>
+                            <field name="subsidy_type" width="100"/>
+                            <field name="district_id" width="100"/>
+                            <field name="asc_id" width="100"/>
+                            <field name="plr_number" width="100"/>
+                            <field name="land_extent" width="200"/>
+                            <field name="amount_quantity" width="100"/>
+                            <field name="status_id" width="100"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="season_id"/>
+                                <field name="subsidy_type"/>
+                                <field name="district_id"/>
+                                <field name="asc_id"/>
+                                <field name="plr_number"/>
+                                <field name="land_extent"/>
+                                <field name="amount_quantity"/>
+                                <field name="status_id"/>
+                                <field name="partner_id" invisible="1" readonly="1"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+
+                <page string="Flood Damage Subsidy" name="flood_damage_subsidy_details">
+                    <field name="flood_damage_subsidy_ids" context="{'default_partner_id': id}">
+                        <tree create="false" delete="false" edit="false">
+                            <field name="plr_number" width="100"/>
+<!--                            <field name="bank_code" width="100"/>-->
+<!--                            <field name="branch_code" width="100"/>-->
+                            <field name="account_no" width="100"/>
+                            <field name="damage_type" width="100"/>
+                            <field name="full_damage_extent" width="200"/>
+                            <field name="partial_damage" width="200"/>
+                            <field name="not_cultivated_extent" width="200"/>
+                            <field name="recommended_extent" width="200"/>
+                            <field name="amount" width="100"/>
+                            <field name="transaction_date" width="100"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="plr_number"/>
+<!--                                <field name="bank_code"/>-->
+<!--                                <field name="branch_code"/>-->
+                                <field name="account_no"/>
+                                <field name="damage_type"/>
+                                <field name="full_damage_extent"/>
+                                <field name="partial_damage"/>
+                                <field name="not_cultivated_extent"/>
+                                <field name="recommended_extent"/>
+                                <field name="amount"/>
+                                <field name="transaction_date"/>
+                                <field name="partner_id" invisible="1" readonly="1"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!--    tree view changes-->
+    <record id="view_individuals_list_tree_hide_all_columns" model="ir.ui.view">
+        <field name="name">res.partner.individuals.list.tree.hide.columns</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="g2p_registry_individual.view_individuals_list_tree"/>
+        <field name="arch" type="xml">
+            <!-- Hide ALL existing fields -->
+            <xpath expr="//field" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Optional: If you want to keep some structure or add a message -->
+            <xpath expr="//tree" position="replace">
+                <tree string="Farmers" name="farmers_tree">
+                    <field name="name" string="Farmer Name"/>
+                    <field name="farmer_id" string="Farmer ID"/>
+                    <field name="nic_number"/>
+                    <field name="address"/>
+                </tree>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Override the main Farmers action to set is_farmer=True on create -->
+    <record id="g2p_registry_individual.action_individuals_list" model="ir.actions.act_window">
+        <field name="name">Farmers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_registrant', '=', True), ('is_group', '=', False)]</field>
+        <field name="context">{
+            'default_is_farmer': True,
+            'default_is_registrant': True,
+            'default_is_group': False,
+            'search_default_is_farmer': 1
+            }
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new farmer registrant!
+            </p>
+            <p>
+                Click the create button to enter the new farmer's information.
+            </p>
+        </field>
+    </record>
+</odoo>

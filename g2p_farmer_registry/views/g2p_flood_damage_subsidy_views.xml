@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- 2. Form View -->
+    <record id="view_flood_damage_subsidy_form" model="ir.ui.view">
+        <field name="name">g2p.flood.damage.subsidy.form</field>
+        <field name="model">g2p.flood.damage.subsidy</field>
+        <field name="arch" type="xml">
+            <form string="GN Division">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1"/>
+                            <field name="land_id" required="1"/>
+                            <field name="plr_number"/>
+                            <field name="damage_type"/>
+                            <field name="full_damage_extent"/>
+                            <field name="partial_damage"/>
+                            <field name="not_cultivated_extent"/>
+                            <field name="recommended_extent"/>
+                        </group>
+                        <group>
+                            <field name="farmer_bank_id"/>
+                            <field name="bank_id"/>
+<!--                            <field name="bank_code" readonly="1"/>-->
+                            <field name="branch_id"/>
+<!--                            <field name="branch_code" readonly="1"/>-->
+                            <field name="amount"/>
+                            <field name="transaction_date"/>
+                            <field name="status_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- 5. Tree view for Flood Damage Subsidy -->
+    <record id="g2p_farmer_registry.view_flood_damage_subsidy_tree" model="ir.ui.view">
+        <field name="name">g2p.flood.damage.subsidy.tree</field>
+        <field name="model">g2p.flood.damage.subsidy</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="land_id" optional="hide"/>
+                <field name="plr_number"/>
+<!--                <field name="bank_code"/>-->
+<!--                <field name="branch_code"/>-->
+                <field name="account_no"/>
+                <field name="damage_type"/>
+                <field name="full_damage_extent" sum="Full Damage"/>
+                <field name="partial_damage" sum="Partial Damage"/>
+                <field name="not_cultivated_extent" sum="Not Cultivated"/>
+                <field name="recommended_extent" sum="Recommended"/>
+                <field name="amount" sum="Total Amount"/>
+                <field name="transaction_date"/>
+                <field name="status_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Flood Damage Subsidy -->
+    <record id="action_flood_damage_list" model="ir.actions.act_window">
+        <field name="name">Flood Damage Subsidy</field>
+        <field name="res_model">g2p.flood.damage.subsidy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="g2p_farmer_registry.view_flood_damage_subsidy_tree"/>  <!-- add this -->
+        <field name="domain">[]</field>
+    </record>
+
+    <!-- Flood Damage Subsidy Menu -->
+    <menuitem
+            id="menu_flood_damage"
+            name="Flood Damage Subsidy"
+            action="g2p_farmer_registry.action_flood_damage_list"
+            web_icon="g2p_farmer_registry,static/description/flood.png"
+            sequence="6"
+    />
+
+    <!-- flood Status -->
+    <record id="view_status_flood_tree" model="ir.ui.view">
+        <field name="name">status.flood.tree</field>
+        <field name="model">status.flood</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" required="1"/>
+                <field name="code" required="1"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 3. flood Status -->
+    <record id="action_status_flood" model="ir.actions.act_window">
+        <field name="name">Flood Status</field>
+        <field name="res_model">status.flood</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'tree_view_ref': 'g2p_farmer_registry.view_status_flood_tree'}</field>
+    </record>
+
+    <menuitem
+            id="menu_status_flood"
+            name="Flood Damage Subsidy Status"
+            parent="menu_status_management"
+            action="action_status_flood"
+            sequence="40"
+    />
+
+</odoo>

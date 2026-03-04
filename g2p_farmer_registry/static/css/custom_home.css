@@ -1,0 +1,22 @@
+.o_home_menu {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+/* Dark semi-transparent overlay */
+.o_home_menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.40);  /* 40% black – adjust 0.30–0.55 */
+    z-index: -1;
+}
+
+/* Optional: make app icons stand out more */
+.o_home_menu .o_app {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18) !important;
+}

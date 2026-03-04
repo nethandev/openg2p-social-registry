@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* g2p_farmer_registry
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Sinhala\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: si_LK\n"
+
+#. module: g2p_farmer_registry
+#: model:ir.actions.act_window,name:g2p_registry_individual.action_individuals_list
+msgid "Farmers"
+msgstr "ගොවීන්"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_individuals_list_tree_hide_all_columns
+msgid "Farmers"
+msgstr "ගොවීන්"
+
+#. module: g2p_farmer_registry
+#: model:ir.ui.menu,name:g2p_registry_individual.menu_individuals_list
+msgid "Farmers"
+msgstr "ගොවීන්"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_individuals_list_tree_hide_all_columns
+msgid "Farmers"
+msgstr "ගොවීන්"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Farmer Details"
+msgstr "ගොවි විස්තර"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__is_farmer
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_users__is_farmer
+msgid "Is Farmer"
+msgstr "ගොවියෙක්ද"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__nic_number
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_users__nic_number
+msgid "NIC Number"
+msgstr "ජාතික හැඳුනුම්පත් අංකය"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__nic_number
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_users__nic_number
+msgid "Farmers Name"
+msgstr "ගොවීන්ගේ නම"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__address
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_users__address
+msgid "Address"
+msgstr "ලිපිනය"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__phone_number
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_users__phone_number
+msgid "Phone Number"
+msgstr "දුරකථන අංකය"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Paddy Land Details"
+msgstr "කුඹුරු ඉඩම් විස්තර"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Cultivation Details"
+msgstr "වගා විස්තර"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Cash Grant Details"
+msgstr "මුදල් ආධාර විස්තර"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Subsidy Details"
+msgstr "ආධාර විස්තර"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Flood Damage Subsidy"
+msgstr "ගංවතුර හානි ආධාර"

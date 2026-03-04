@@ -1,0 +1,218 @@
+msgid ""
+msgstr ""
+"X-Generator: Odoo\n"
+"X-Odoo-Translation: 1\n"
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-19 11:00+0000\n"
+"PO-Revision-Date: 2026-01-19 14:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Tamil <ta@li.org>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Core/global strings — giving them module context to avoid parser crash
+#. module: g2p_farmer_registry
+msgid "New"
+msgstr "புதிய"
+
+#. module: g2p_farmer_registry
+msgid "Send message"
+msgstr "செய்தி அனுப்பு"
+
+#. module: g2p_farmer_registry
+msgid "Log note"
+msgstr "குறிப்பு பதிவு"
+
+#. module: g2p_farmer_registry
+msgid "Activities"
+msgstr "செயல்பாடுகள்"
+
+#. module: g2p_farmer_registry
+msgid "Follow"
+msgstr "பின்தொடரவும்"
+
+#. module: g2p_farmer_registry
+msgid "Creating a new record..."
+msgstr "புதிய பதிவை உருவாக்குகிறது..."
+
+#. module: g2p_farmer_registry
+msgid "Contact created"
+msgstr "விவசாயி உருவாக்கப்பட்டார்"
+
+#. module: g2p_farmer_registry
+msgid "Language ?"
+msgstr "மொழி ?"
+
+# All custom strings — with full context
+#. module: g2p_farmer_registry
+#: model:ir.actions.act_window,name:g2p_registry_individual.action_individuals_list
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_individuals_list_tree_hide_all_columns
+msgid "Farmers"
+msgstr "விவசாயிகள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_individuals_list_tree_hide_all_columns
+msgid "Farmers Name"
+msgstr "விவசாயிகள் பெயர்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Farmer Details"
+msgstr "விவசாயி விவரங்கள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Paddy Land Details"
+msgstr "நெல் நில விவரங்கள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Cultivation Details"
+msgstr "பயிரிடல் விவரங்கள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Cash Grant Details"
+msgstr "பண உதவி விவரங்கள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Subsidy Details"
+msgstr "மானிய விவரங்கள்"
+
+#. module: g2p_farmer_registry
+#: model_terms:ir.ui.view,arch_db:g2p_farmer_registry.view_farmer_form_simplified
+msgid "Flood Damage Subsidy"
+msgstr "வெள்ள பாதிப்பு மானியம்"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__nic_number
+msgid "NIC Number ?"
+msgstr "NIC எண் ?"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__address
+msgid "Address ?"
+msgstr "முகவரி ?"
+
+#. module: g2p_farmer_registry
+#: model:ir.model.fields,field_description:g2p_farmer_registry.field_res_partner__phone_number
+msgid "Phone Number ?"
+msgstr "தொலைபேசி எண் ?"
+
+# Tree column headers (with module prefix — this is required)
+#. module: g2p_farmer_registry
+msgid "Land Number"
+msgstr "நில எண்"
+
+#. module: g2p_farmer_registry
+msgid "District"
+msgstr "மாவட்டம்"
+
+#. module: g2p_farmer_registry
+msgid "Asc"
+msgstr "ஏஎஸ்சி"
+
+#. module: g2p_farmer_registry
+msgid "PLR Number"
+msgstr "PLR எண்"
+
+#. module: g2p_farmer_registry
+msgid "Irrigation"
+msgstr "நீர்ப்பாசனம்"
+
+#. module: g2p_farmer_registry
+msgid "Land Extent (HA)"
+msgstr "நில விரிவாக்கம்"
+
+#. module: g2p_farmer_registry
+msgid "Season"
+msgstr "பருவம்"
+
+#. module: g2p_farmer_registry
+msgid "Cultivated Extend"
+msgstr "பயிரிடப்பட்ட விரிவாக்கம்"
+
+#. module: g2p_farmer_registry
+msgid "Cultivated Date"
+msgstr "பயிரிடப்பட்ட தேதி"
+
+#. module: g2p_farmer_registry
+msgid "Data Entered"
+msgstr "தரவு உள்ளிடப்பட்டது"
+
+#. module: g2p_farmer_registry
+msgid "Last Update"
+msgstr "கடைசி புதுப்பிப்பு"
+
+#. module: g2p_farmer_registry
+msgid "Status"
+msgstr "நிலை"
+
+#. module: g2p_farmer_registry
+msgid "Subsidy Type"
+msgstr "மானிய வகை"
+
+#. module: g2p_farmer_registry
+msgid "Bank Name"
+msgstr "வங்கி பெயர்"
+
+#. module: g2p_farmer_registry
+msgid "Branch Name"
+msgstr "கிளை பெயர்"
+
+#. module: g2p_farmer_registry
+msgid "Account Detail"
+msgstr "கணக்கு விவரம்"
+
+#. module: g2p_farmer_registry
+msgid "Slip Number"
+msgstr "ஸ்லிப் எண்"
+
+#. module: g2p_farmer_registry
+msgid "Amount/Quantity"
+msgstr "தொகை/அளவு"
+
+#. module: g2p_farmer_registry
+msgid "Bank Code"
+msgstr "வங்கி குறியீடு"
+
+#. module: g2p_farmer_registry
+msgid "Branch Code"
+msgstr "கிளை குறியீடு"
+
+#. module: g2p_farmer_registry
+msgid "Account No"
+msgstr "கணக்கு எண்"
+
+#. module: g2p_farmer_registry
+msgid "Damage Type"
+msgstr "பாதிப்பு வகை"
+
+#. module: g2p_farmer_registry
+msgid "Full Damage Extent"
+msgstr "முழு பாதிப்பு அளவு"
+
+#. module: g2p_farmer_registry
+msgid "Partial Damage"
+msgstr "பகுதி பாதிப்பு"
+
+#. module: g2p_farmer_registry
+msgid "Not Cultivated Extent"
+msgstr "பயிரிடப்படாத அளவு"
+
+#. module: g2p_farmer_registry
+msgid "Recommended Extent"
+msgstr "பரிந்துரைக்கப்பட்ட அளவு"
+
+#. module: g2p_farmer_registry
+msgid "Amount"
+msgstr "தொகை"
+
+#. module: g2p_farmer_registry
+msgid "Transaction Date"
+msgstr "பரிவர்த்தனை தேதி"
